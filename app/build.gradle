@@ -1,14 +1,14 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 publish {
-    userOrg = 'ShockUtility'
-    groupId = 'org.nhnnext.sunghwanjo'
-    artifactId = 'gearslider'
+    userOrg = 'shockutility'
+    groupId = 'kr.docs'
+    artifactId = 'color-picker'
     publishVersion = '0.0.1'
     desc = 'Color Picker'
-    website = 'https://github.com/sunghwanJo/GearSlider'
-    issueTracker = "${website}/issues"
-    repository = "${website}.git"
+    website = 'https://github.com/ShockUtility/ColorPicker'
+    issueTracker = "https://github.com/ShockUtility/ColorPicker/issues"
+    repository = "https://github.com/ShockUtility/ColorPicker.git"
 }
 
 android {
@@ -33,5 +33,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
-    classpath 'com.novoda:bintray-release:0.3.0'
 }
+
+

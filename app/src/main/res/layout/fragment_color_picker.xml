@@ -20,7 +20,7 @@
             android:background="#aaaaaa"
             android:id="@+id/relativeLayout">
 
-            <kr.docs.bigkeyni.common.ColorButton
+            <kr.docs.colorpicker.ColorButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"

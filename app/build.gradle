@@ -4,7 +4,7 @@ publish {
     userOrg = 'shockutility'
     groupId = 'kr.docs'
     artifactId = 'color-picker'
-    publishVersion = '0.0.3'
+    publishVersion = '0.0.5'
     desc = 'Color Picker'
     website = 'https://github.com/ShockUtility/ColorPicker'
     issueTracker = "https://github.com/ShockUtility/ColorPicker/issues"

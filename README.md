@@ -15,5 +15,30 @@ dependencies {
 }
 ```
 
+# Layout
+```sh
+    <kr.docs.colorpicker.ColorButton
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:text="Color" 
+        custom:currentColor="#30384a" />
+```
+
+# Code
+```sh
+public class MainActivity extends AppCompatActivity implements ColorPickerFragment.ColorPickerListener {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public void onColorPickerDone (ColorButton button) {
+        Log.d("MainActivity", "Selected Color : " + ColorEx.hexColor(button.getCurrentColor()));
+    }
+}
+```
+
 # License
 MIT

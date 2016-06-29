@@ -14,7 +14,7 @@ Project consists three main classes which can be easily extended and suited to u
 # Installation (build.gradle)
 ```sh
 dependencies {
-    compile 'kr.docs:color-picker:0.0.5'
+    compile 'kr.docs:color-picker:0.0.9'
 }
 ```
 

@@ -1,6 +1,8 @@
 # ColorPicker
 Color Picker for Android.
+
 Easy to use. 
+
 Project consists three main classes which can be easily extended and suited to user requirements.
 
 

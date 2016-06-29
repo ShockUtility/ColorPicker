@@ -26,6 +26,7 @@ public class ColorButton extends Button implements View.OnClickListener {
         }
 
         this.setBackgroundColor(mCurrentColor);
+        this.setOnClickListener(this);
     }
 
     public int getCurrentColor() {

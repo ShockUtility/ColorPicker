@@ -78,7 +78,7 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:text="확인"
+            android:text="@string/picker_done"
             android:id="@+id/btnDone"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"

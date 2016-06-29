@@ -25,21 +25,22 @@ import java.util.Arrays;
 
 public class ColorPickerFragment extends DialogFragment implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
 
+    final  String       colorTable = "#00000000,#ffffff,#e2e2e2,#bbbbbb,#8e8e8e,#707070,#545454,#383838,#1c1c1c,#000000,#d8fff8,#91ffec,#49ffe0,#00ffd4,#00d8b4,#00b799,#00967d,#007561,#005446,#00332a,#d8ffeb,#a3ffd1,#6dffb6,#38ff9b,#00ff7f,#00d369,#00a854,#007c3e,#005446,#002613,#d8ffd8,#a3ffa3,#6dff6d,#38ff38,#00ff00,#00d600,#00ad00,#008400,#005b00,#003300,#ebffd8,#d1ffa3,#b6ff6d,#9bff38,#7fff00,#6cd800,#59b200,#468c00,#336600,#1f3f00,#ffffd8,#ffff91,#ffff49,#ffff00,#d8d800,#b7b700,#969600,#757500,#545400,#333300,#fff5d8,#ffeaad,#ffdf82,#ffd456,#ffca2b,#ffbf00,#cc9900,#997200,#664c00,#332600,#ffebd8,#ffd6ad,#ffc082,#ffaa56,#ff952b,#ff7f00,#d16800,#a05000,#703800,#3f1f00,#ffe2d8,#ffc1ad,#ffa182,#ff8056,#ff602b,#ff3f00,#d63500,#a82a00,#7a1e00,#4c1300,#ffd8d8,#ffadad,#ff8282,#ff5656,#ff2b2b,#ff0000,#d10000,#a00000,#700000,#3f0000,#ffd8eb,#ffadd6,#ff82c0,#ff56aa,#ff2b95,#ff007f,#cc0066,#99004c,#660033,#330019,#ffd8ff,#ffa3ff,#ff6dff,#ff38ff,#ff00ff,#d600d6,#ad00ad,#840084,#5b005b,#330033,#ebd8ff,#d6adff,#c082ff,#aa56ff,#952bff,#7f00ff,#6600cc,#4c0099,#330066,#190033,#d8d8ff,#adadff,#8282ff,#5656ff,#2b2bff,#0000ff,#0000d1,#0000a0,#000070,#00003f,#d8e5ff,#adc8ff,#82abff,#568eff,#2b71ff,#0055ff,#0044cc,#003399,#002266,#001133,#d8f2ff,#a3e0ff,#6dceff,#38bcff,#00a9ff,#008ed6,#0073ad,#005884,#003d5b,#002133";
+
+    public int          defaultColor;
+    public ColorButton  clickedButton;
+
     Button          btnDone;
     ColorButton     btnColor;
     TextView        txtColor;
     SeekBar         sbAlpha;
     GridView        gridView;
 
-    final String colorTable = "#00000000,#ffffff,#e2e2e2,#bbbbbb,#8e8e8e,#707070,#545454,#383838,#1c1c1c,#000000,#d8fff8,#91ffec,#49ffe0,#00ffd4,#00d8b4,#00b799,#00967d,#007561,#005446,#00332a,#d8ffeb,#a3ffd1,#6dffb6,#38ff9b,#00ff7f,#00d369,#00a854,#007c3e,#005446,#002613,#d8ffd8,#a3ffa3,#6dff6d,#38ff38,#00ff00,#00d600,#00ad00,#008400,#005b00,#003300,#ebffd8,#d1ffa3,#b6ff6d,#9bff38,#7fff00,#6cd800,#59b200,#468c00,#336600,#1f3f00,#ffffd8,#ffff91,#ffff49,#ffff00,#d8d800,#b7b700,#969600,#757500,#545400,#333300,#fff5d8,#ffeaad,#ffdf82,#ffd456,#ffca2b,#ffbf00,#cc9900,#997200,#664c00,#332600,#ffebd8,#ffd6ad,#ffc082,#ffaa56,#ff952b,#ff7f00,#d16800,#a05000,#703800,#3f1f00,#ffe2d8,#ffc1ad,#ffa182,#ff8056,#ff602b,#ff3f00,#d63500,#a82a00,#7a1e00,#4c1300,#ffd8d8,#ffadad,#ff8282,#ff5656,#ff2b2b,#ff0000,#d10000,#a00000,#700000,#3f0000,#ffd8eb,#ffadd6,#ff82c0,#ff56aa,#ff2b95,#ff007f,#cc0066,#99004c,#660033,#330019,#ffd8ff,#ffa3ff,#ff6dff,#ff38ff,#ff00ff,#d600d6,#ad00ad,#840084,#5b005b,#330033,#ebd8ff,#d6adff,#c082ff,#aa56ff,#952bff,#7f00ff,#6600cc,#4c0099,#330066,#190033,#d8d8ff,#adadff,#8282ff,#5656ff,#2b2bff,#0000ff,#0000d1,#0000a0,#000070,#00003f,#d8e5ff,#adc8ff,#82abff,#568eff,#2b71ff,#0055ff,#0044cc,#003399,#002266,#001133,#d8f2ff,#a3e0ff,#6dceff,#38bcff,#00a9ff,#008ed6,#0073ad,#005884,#003d5b,#002133";
-    int mRowHeight;
-    Context mContext;
-
-    public int defaultColor;
-    public int resultCode;
+    int             mRowHeight;
+    Context         mContext;
 
     public interface ColorPickerListener {
-        public void onColorPickerDone(int resultCode, int color);
+        public void onColorPickerDone(ColorButton button);
     }
 
     ColorPickerListener colorPickerListener;
@@ -71,11 +72,11 @@ public class ColorPickerFragment extends DialogFragment implements SeekBar.OnSee
                             btnColor.setCurrentColor(Color.argb(sbAlpha.getProgress()+1, Color.red(color), Color.green(color), Color.blue(color)));
                         } catch (Exception e) {
                             txtColor.setText("");
-                            Toast.makeText(getActivity(), "올바른 칼라값을 입력해 주세요!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getString(R.string.picker_invalid_color), Toast.LENGTH_SHORT).show();
                             return true;
                         }
                     } else {
-                        Toast.makeText(getActivity(), "6자리 칼라값을 입력해 주세요!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.picker_invalid_digit), Toast.LENGTH_SHORT).show();
                         return true;
                     }
                 }
@@ -123,7 +124,8 @@ public class ColorPickerFragment extends DialogFragment implements SeekBar.OnSee
             btnColor.setCurrentColor(Color.argb(sbAlpha.getProgress()+1, Color.red(color), Color.green(color), Color.blue(color)));
         } catch (Exception e) {}
 
-        colorPickerListener.onColorPickerDone(resultCode, btnColor.getCurrentColor());
+        clickedButton.setCurrentColor(btnColor.getCurrentColor());
+        colorPickerListener.onColorPickerDone(clickedButton);
         dismiss();
     }
 

@@ -3,10 +3,13 @@ package kr.docs.colorpicker;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.Button;
 
-public class ColorButton extends Button {
+public class ColorButton extends Button implements View.OnClickListener {
 
     private int mCurrentColor = 0xFFFFFFFF;
 
@@ -32,5 +35,15 @@ public class ColorButton extends Button {
     public void setCurrentColor(int color) {
         mCurrentColor = color;
         this.setBackgroundColor(mCurrentColor);
+    }
+
+    @Override
+    public void onClick(View v) {
+        AppCompatActivity activity = (AppCompatActivity)getContext();
+        FragmentManager fm = activity.getSupportFragmentManager();
+        ColorPickerFragment dialog = new ColorPickerFragment();
+        dialog.defaultColor = mCurrentColor;
+        dialog.clickedButton = this;
+        dialog.show(fm, null);
     }
 }

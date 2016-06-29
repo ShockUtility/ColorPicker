@@ -11,7 +11,7 @@ iTunes RSS 데이터를 사용 했습니다.
 
 # Screen Shot
 <p align="center" >
-<img src="https://github.com/ShockUtility/ColorPicker/blob/master/screenshot.png">
+<img src="https://github.com/ShockUtility/ColorPicker/blob/master/Screenshot.png">
 </p>
 
 # Tech

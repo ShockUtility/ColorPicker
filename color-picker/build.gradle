@@ -71,3 +71,5 @@ bintray {
     }
     configurations = ['archives']
 }
+
+// upload command : gradle clean build bintrayUpload -PdryRun=false

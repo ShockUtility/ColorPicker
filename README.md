@@ -14,12 +14,16 @@ Project consists three main classes which can be easily extended and suited to u
 # Installation (build.gradle)
 ```sh
 dependencies {
-    compile 'kr.docs:color-picker:0.0.5'
+    compile 'kr.docs:color-picker:0.0.9'
 }
 ```
 
 # Layout
 ```sh
+<RelativeLayout ...
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    ...>
+
     <kr.docs.colorpicker.ColorButton
         android:layout_width="wrap_content"
         android:layout_height="37dp"

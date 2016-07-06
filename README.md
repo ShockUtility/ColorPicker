@@ -8,7 +8,7 @@ Project consists three main classes which can be easily extended and suited to u
 
 # Screen Shot
 <p align="center" >
-<img src="https://github.com/ShockUtility/ColorPicker/blob/master/Screenshot.png">
+<img src="https://raw.githubusercontent.com/ShockUtility/ColorPicker/master/Screenshot.png">
 </p>
 
 # Installation (build.gradle)

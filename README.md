@@ -20,6 +20,10 @@ dependencies {
 
 # Layout
 ```sh
+<RelativeLayout ...
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    ...>
+
     <kr.docs.colorpicker.ColorButton
         android:layout_width="wrap_content"
         android:layout_height="37dp"

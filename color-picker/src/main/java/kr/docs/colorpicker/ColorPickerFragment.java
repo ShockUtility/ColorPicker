@@ -58,6 +58,7 @@ public class ColorPickerFragment extends DialogFragment implements SeekBar.OnSee
         gridView = (GridView)rootView.findViewById(R.id.gridView);
 
         btnColor.setCurrentColor(defaultColor);
+        btnColor.setOnClickListener(null);
         txtColor.setText(String.format("%06X", 0xFFFFFF & defaultColor));
 
         txtColor.setOnEditorActionListener(new EditText.OnEditorActionListener() {
